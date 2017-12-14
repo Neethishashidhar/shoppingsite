@@ -2,7 +2,6 @@ from django.contrib import admin
 
 from .models import Organisation, Branch, Customer, Order, Product
 
-
 admin.site.register(Organisation)
 admin.site.register(Branch)
 admin.site.register(Customer)

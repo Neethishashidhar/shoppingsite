@@ -32,7 +32,7 @@ class Customer(models.Model):
     """
     branch = models.ForeignKey('Branch', on_delete=models.PROTECT)
     name = models.CharField(max_length=200, help_text="Enter Customer name")
-    email_id = models.EmailField(
+    email = models.EmailField(
         help_text="Enter Email id in the form xyz@domain.com")
 
     def __str__(self):
