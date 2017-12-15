@@ -4,4 +4,5 @@ from mysite import views
 urlpatterns = [
     url(r'^$', views.HomePageView.as_view()),
     url(r'^orders/$', views.ListOrdersView.as_view()),
+    url(r'^CreateOrder/$', views.CreateAnOrder.create),
 ]
