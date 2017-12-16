@@ -9,26 +9,22 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <script src="{% static 'js/testing.js' %}"></script>
 </head>
 
-<body>
-<div>
-    <div class="row">
-      <div class="col-sm-4">
-      {% block sidebar %}
-      <ol class="sidebar-nav">
-          <li> <a href="/orders/">List all my Orders</a></li>
-          <li> <a href="/CreateOrder/">Create an Order</a></li>
-          <li> <a href="">Delete an order</a> </li>
-          <li> <a href="">Edit an order</a> </li>
-      <ol>
-     {% endblock %}
-      </div>
-      <div class="col-sm-8">
-  <h1>Shopping site</h1>
-  </div>
-    </div>
-{% block content %}{% endblock %}
-  </div>
+<body onload="disable_dropdowns()">
+<nav class="navbar navbar-inverse">
+<div class="container-fluid">
+      <div class="navbar-header">
+     	<a class="navbar-brand" href=""> Shopping site </a>
+      <ul class="nav navbar-nav">
+      	  <li> <a href="/"> Back home </a></li>
+          <li> <a href="/orders/"> List all my Orders </a> </li>
+          <li> <a href="/CreateOrder/"> Create an Order </a> </li>
+          <li> <a href=""> Delete an order</a> </li>
+          <li> <a href=""> Edit an order </a> </li>
+      <ul>     
+  </nav>
+  {% block content %}{% endblock %}
 </body>
 </html>

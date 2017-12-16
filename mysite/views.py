@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.views import generic
 from django.views.generic import TemplateView
-from .forms import CreateOrder
+from .forms import OrderForm
 from django.http import HttpResponseRedirect
 from .models import Order
+from django.views.generic.edit import FormView
+from django.urls import reverse
 
 
 class HomePageView(TemplateView):
@@ -16,15 +18,10 @@ class ListOrdersView(generic.ListView):
     model = Order
 
 
-class CreateAnOrder(TemplateView):
+class OrderCreate(FormView):
+    template_name = 'order_form.html'
+    form_class = OrderForm
 
-    def create(request):
-        if request.method == 'POST':
-            form = CreateOrder(request.POST)
-            if form.is_valid():
-                form.save()
-                return HttpResponseRedirect('/orders/')
-        else:
-            form = CreateOrder()
-
-        return render(request, 'mysite/create_order.html', {'form': form})
+    def form_valid(self, form):
+        form.save()
+        return HttpResponseRedirect(reverse('order-list'))
