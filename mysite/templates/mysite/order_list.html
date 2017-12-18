@@ -1,27 +1,29 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<div class="text-center">
+<div class="container">
     {% if order_list %}
-    <table padding= .5em class="table-bordered">
+    <table class="table-bordered">
 		<th> Order Number </th>
     	<th> Customer Name </th> 
     	<th> Product Name </th>
     	<th> comments </th>
+    	<th> Edit </th>
+    	<th> Delete </th>
       {% for order in order_list %}
       <tr>
-
        <td>{{ order.order_id }}</td>
        <td>{{ order.customer }}</td>
        <td>{{ order.product }}</td>
        <td>{{ order.comments }}</td>
+       <td><a href="{{ order.get_absolute_url_for_edit }}">Edit</a></td>
+       <td><a href="{{ order.get_absolute_url_for_delete }}">Delete</a></td>
       </tr>
       {% endfor %}
-
    </table>
     {% else %}
       <p>There are no orders that have been placed.</p>
     {% endif %}
-</div>       
+</div>     
 {% endblock %}
 

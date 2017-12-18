@@ -1,4 +1,5 @@
 from django import forms
+
 from .models import Organisation, Branch, Order, Customer
 
 
@@ -22,3 +23,6 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = ('organisation', 'branch', 'customer', 'product', 'comments')
+
+    class Media:
+        js = ('js/validation.js',)

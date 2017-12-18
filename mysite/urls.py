@@ -2,7 +2,11 @@ from django.conf.urls import url
 from mysite import views
 
 urlpatterns = [
-    url(r'^$', views.HomePageView.as_view()),
+    url(r'^$', views.HomePageView.as_view(), name='home-view'),
     url(r'^orders/$', views.ListOrdersView.as_view(), name='order-list'),
-    url(r'^CreateOrder/$', views.OrderCreate.as_view()),
+    url(r'^CreateOrder/$', views.OrderCreate.as_view(), name='create-order'),
+    url(r'^EditOrder/(?P<pk>\d+)$',
+        views.OrderUpdate.as_view(), name='edit-order'),
+    url(r'^DeleteOrder/(?P<pk>\d+)$',
+        views.OrderDelete.as_view(), name='delete-order')
 ]

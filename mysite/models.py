@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Organisation(models.Model):
@@ -59,3 +60,12 @@ class Order (models.Model):
     customer = models.ForeignKey('Customer', models.PROTECT)
     product = models.ForeignKey('Product', models.PROTECT)
     comments = models.TextField(max_length=300, null=True)
+
+    def __str__(self):
+        return self.order_id
+
+    def get_absolute_url_for_edit(self):
+        return reverse('edit-order', args=[self.order_id])
+
+    def get_absolute_url_for_delete(self):
+        return reverse('delete-order', args=[self.order_id])

@@ -1,11 +1,12 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.views.generic import TemplateView
+from django.views.generic.edit import FormView, UpdateView, DeleteView
+
 from .forms import OrderForm
-from django.http import HttpResponseRedirect
 from .models import Order
-from django.views.generic.edit import FormView
-from django.urls import reverse
 
 
 class HomePageView(TemplateView):
@@ -25,3 +26,15 @@ class OrderCreate(FormView):
     def form_valid(self, form):
         form.save()
         return HttpResponseRedirect(reverse('order-list'))
+
+
+class OrderUpdate(UpdateView):
+    model = Order
+    fields = ['customer', 'product', 'comments']
+    template_name_suffix = '_update_form'
+    success_url = reverse_lazy('order-list')
+
+
+class OrderDelete(DeleteView):
+    model = Order
+    success_url = reverse_lazy('order-list')

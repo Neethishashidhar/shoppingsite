@@ -1,3 +1,4 @@
+
 function disable_dropdowns(){
 	document.getElementById("id_branch").disabled = true;
 	document.getElementById("id_customer").disabled = true;
@@ -7,6 +8,7 @@ function disable_dropdowns(){
 		br_ob[i].style.visibility = "hidden";
 		br_ob[i].style.display = 'none';
 	}
+	$("#id_branch option:gt(0)").attr('disabled', 'disabled').hide();
 	var cust_ob = document.getElementById("id_customer").options;
 	var cust_len = document.getElementById("id_customer").length;
 	for(var i = 1; i < cust_len; i++){

@@ -1,5 +1,7 @@
 {% extends "base_generic.html" %}
 {% block content %}
+ 
+{{ form.media }}
 <div class="container">
 	<h1 class="text-center"> Create your Order </h1>
     <form action="" method="post">
@@ -12,4 +14,7 @@
    <input type='hidden' id='myhidden1' value=''>  
    <input type='hidden' id='myhidden2' value=''> 
 </div> 
+<script type="text/javascript">;
+disable_dropdowns();
+</script>
 {% endblock %}
