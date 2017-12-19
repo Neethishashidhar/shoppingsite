@@ -8,5 +8,7 @@ urlpatterns = [
     url(r'^EditOrder/(?P<pk>\d+)$',
         views.OrderUpdate.as_view(), name='edit-order'),
     url(r'^DeleteOrder/(?P<pk>\d+)$',
-        views.OrderDelete.as_view(), name='delete-order')
+        views.OrderDelete.as_view(), name='delete-order'),
+    url(r'^GetOrdersApi/', views.OrderListAPI.as_view()),
+    url(r'^CreateOrderApi/', views.OrderCreateAPI.as_view()),
 ]
