@@ -6,7 +6,7 @@ function disable_dropdowns(){
 	var br_len = document.getElementById("id_branch").length;
 	for(var i = 1; i < br_len; i++){
 		br_ob[i].style.visibility = "hidden";
-		br_ob[i].style.display = 'none';
+		br_ob[i].setAttribute("hidden", true);
 	}
 	$("#id_branch option:gt(0)").attr('disabled', 'disabled').hide();
 	var cust_ob = document.getElementById("id_customer").options;

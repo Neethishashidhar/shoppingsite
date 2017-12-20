@@ -51,18 +51,18 @@ class Product(models.Model):
         return self.name
 
 
-class Order (models.Model):
+class Order(models.Model):
 
     """
     Model representing a order
     """
-    order_id = models.AutoField(primary_key=True, editable=False)
+    order_id = models.BigAutoField(primary_key=True, editable=False)
     customer = models.ForeignKey('Customer', models.PROTECT)
     product = models.ForeignKey('Product', models.PROTECT)
     comments = models.TextField(max_length=300, null=True)
 
     def __str__(self):
-        return self.order_id
+        return str(self.order_id)
 
     def get_absolute_url_for_edit(self):
         return reverse('edit-order', args=[self.order_id])
