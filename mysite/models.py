@@ -58,16 +58,16 @@ class Order(models.Model):
     """
     Model representing a order
     """
-    order_id = OrderField(null=False)
+    order_num = OrderField(null=False)
     customer = models.ForeignKey('Customer', models.PROTECT)
     product = models.ForeignKey('Product', models.PROTECT)
     comments = models.TextField(max_length=300, null=True)
 
     def __str__(self):
-        return self.order_id
+        return self.order_num
 
     def get_absolute_url_for_edit(self):
-        return reverse('edit-order', args=[self.order_id])
+        return reverse('edit-order', args=[self.id])
 
     def get_absolute_url_for_delete(self):
-        return reverse('delete-order', args=[self.order_id])
+        return reverse('delete-order', args=[self.id])

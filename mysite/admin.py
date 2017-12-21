@@ -12,4 +12,4 @@ admin.site.register(Product)
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('customer', 'product', 'comments')
-    exclude = ('order_id',)
+    exclude = ('order_num',)
