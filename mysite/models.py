@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 
+from .custom_fields import OrderField
+
 
 class Organisation(models.Model):
 
@@ -56,13 +58,13 @@ class Order(models.Model):
     """
     Model representing a order
     """
-    order_id = models.BigAutoField(primary_key=True, editable=False)
+    order_id = OrderField(null=False)
     customer = models.ForeignKey('Customer', models.PROTECT)
     product = models.ForeignKey('Product', models.PROTECT)
     comments = models.TextField(max_length=300, null=True)
 
     def __str__(self):
-        return str(self.order_id)
+        return self.order_id
 
     def get_absolute_url_for_edit(self):
         return reverse('edit-order', args=[self.order_id])

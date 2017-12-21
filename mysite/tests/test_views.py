@@ -1,6 +1,6 @@
 from django.test import TestCase
-from mysite.models import Order, Organisation, Branch, Customer, Product
 from django.urls import reverse
+from mysite.models import Order, Organisation, Branch, Customer, Product
 from mysite.serializers import OrderSerializer
 
 
